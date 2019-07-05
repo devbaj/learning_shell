@@ -1,8 +1,12 @@
-git status
+git status > /dev/null 2>&1
 if [ $? -eq 1 ] ; then
   UNDER_VERSION_CONTROL=1
 else
-  UNDER_VERSION_CONTROL=0
+  if git status 2>&1 | grep "fatal" ; then
+    UNDER_VERSION_CONTROL=1
+  else
+    UNDER_VERSION_CONTROL=0
+  fi
 fi
 
 # a 1 indicates no version control detected
