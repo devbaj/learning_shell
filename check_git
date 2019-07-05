@@ -1,0 +1,17 @@
+git status
+if [ $? -eq 1 ] ; then
+  UNDER_VERSION_CONTROL=1
+else
+  UNDER_VERSION_CONTROL=0
+fi
+
+# a 1 indicates no version control detected
+# 0 indicates version control detected
+
+echo "version control? "$UNDER_VERSION_CONTROL
+
+if [ $UNDER_VERSION_CONTROL -eq 0 ] ; then
+  echo "version control found"
+else
+  echo "no version control"
+fi
